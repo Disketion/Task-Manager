@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Трекер задач</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <button onclick="showSection('main')">Главная</button>
+    <button onclick="showSection('inprogress')">В процессе</button>
+    <button onclick="showSection('completed')">Выполнено</button>
+    <button onclick="showSection('archive')">Архив</button>
+    <button onclick="showSection('about')">О нас</button>
+  </nav>
+
+  <!-- Главная -->
+  <div id="main-section" class="section">
+    <div class="app">
+      <h1>Мой трекер задач</h1>
+      <button id="add-task-btn">+ Добавить задачу</button>
+      <ul id="task-list"></ul>
+    </div>
+  </div>
+
+  <!-- В процессе -->
+  <div id="inprogress-section" class="section" style="display: none;">
+    <div class="app">
+      <h2>В процессе</h2>
+      <ul id="inprogress-list"></ul>
+    </div>
+  </div>
+
+  <!-- Выполнено -->
+  <div id="completed-section" class="section" style="display: none;">
+    <div class="app">
+      <h2>Выполненные задачи</h2>
+      <ul id="completed-list"></ul>
+    </div>
+  </div>
+
+  <!-- Архив -->
+  <div id="archive-section" class="section" style="display: none;">
+    <div class="app">
+      <h2>Архив завершённых задач</h2>
+      <ul id="archive-list"></ul>
+    </div>
+  </div>
+
+  <!-- О нас -->
+  <div id="about-section" class="section" style="display: none;">
+    <div class="app">
+      <h2>О нас</h2>
+      <p>Простой трекер задач, созданный для практики JavaScript.</p>
+      <ul>
+        <li>Добавляй задачи</li>
+        <li>Меняй статус задачи</li>
+        <li>Смотри по вкладкам: В процессе, Выполнено</li>
+        <li>Архив завершённых задач</li>
+      </ul>
+      <p>Год: 2024–2025<br>Автор: Смирнов Матвей 82/2024</p>
+      <p>
+        <a href="https://t.me/Reshapiz" target="_blank">Мой Telegram</a><br>
+        <a href="https://github.com/Disketion?tab=repositories" target="_blank">Мой GitHub</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Модалка -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Новая задача</h2>
+      <input type="text" id="task-text" placeholder="Текст задачи" />
+      <select id="task-status">
+        <option value="today">Сегодня</option>
+        <option value="in-progress">В процессе</option>
+        <option value="completed">Выполнено</option>
+      </select>
+      <button id="save-task">Сохранить</button>
+      <button id="close-modal">Отмена</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
