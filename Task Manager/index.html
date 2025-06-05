@@ -2,85 +2,61 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Трекер задач</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav>
-    <button onclick="showSection('main')">Главная</button>
-    <button onclick="showSection('inprogress')">В процессе</button>
-    <button onclick="showSection('completed')">Выполнено</button>
-    <button onclick="showSection('archive')">Архив</button>
-    <button onclick="showSection('about')">О нас</button>
-  </nav>
-
-  <!-- Главная -->
-  <div id="main-section" class="section">
-    <div class="app">
-      <h1>Мой трекер задач</h1>
-      <button id="add-task-btn">+ Добавить задачу</button>
-      <ul id="task-list"></ul>
-    </div>
-  </div>
-
-  <!-- В процессе -->
-  <div id="inprogress-section" class="section" style="display: none;">
-    <div class="app">
-      <h2>В процессе</h2>
-      <ul id="inprogress-list"></ul>
-    </div>
-  </div>
-
-  <!-- Выполнено -->
-  <div id="completed-section" class="section" style="display: none;">
-    <div class="app">
-      <h2>Выполненные задачи</h2>
-      <ul id="completed-list"></ul>
-    </div>
-  </div>
-
-  <!-- Архив -->
-  <div id="archive-section" class="section" style="display: none;">
-    <div class="app">
-      <h2>Архив завершённых задач</h2>
-      <ul id="archive-list"></ul>
-    </div>
-  </div>
-
-  <!-- О нас -->
-  <div id="about-section" class="section" style="display: none;">
-    <div class="app">
-      <h2>О нас</h2>
-      <p>Простой трекер задач, созданный для практики JavaScript.</p>
+  <header>
+    <div class="burger" id="burger">&#9776;</div>
+    <nav class="nav-menu" id="nav-menu">
       <ul>
-        <li>Добавляй задачи</li>
-        <li>Меняй статус задачи</li>
-        <li>Смотри по вкладкам: В процессе, Выполнено</li>
-        <li>Архив завершённых задач</li>
+        <li><a href="https://github.com/Disketion" target="_blank" rel="noopener noreferrer">Мой GitHub</a></li>
+        <li>Учусь в Череповецком химико-технологическом колледже</li>
+        <li>Этот сайт — мой учебный проект</li>
       </ul>
-      <p>Год: 2024–2025<br>Автор: Смирнов Матвей 82/2024</p>
-      <p>
-        <a href="https://t.me/Reshapiz" target="_blank">Мой Telegram</a><br>
-        <a href="https://github.com/Disketion?tab=repositories" target="_blank">Мой GitHub</a>
-      </p>
-    </div>
-  </div>
+    </nav>
+    <button id="theme-toggle" title="Переключить тему">🌙</button>
+  </header>
 
-  <!-- Модалка -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h2>Новая задача</h2>
-      <input type="text" id="task-text" placeholder="Текст задачи" />
-      <select id="task-status">
-        <option value="today">Сегодня</option>
-        <option value="in-progress">В процессе</option>
-        <option value="completed">Выполнено</option>
+  <main class="container">
+    <section class="task-form">
+      <h2>Добавить задачу</h2>
+      <input id="title" type="text" placeholder="Название задачи" />
+      <textarea id="description" placeholder="Описание"></textarea>
+      <select id="category">
+        <option>Работа</option>
+        <option>Учёба</option>
+        <option>Дом</option>
+        <option>Разное</option>
       </select>
-      <button id="save-task">Сохранить</button>
-      <button id="close-modal">Отмена</button>
-    </div>
-  </div>
+      <select id="priority">
+        <option>Средний</option>
+        <option>Высокий</option>
+        <option>Низкий</option>
+      </select>
+      <input id="time" type="number" min="1" value="30" />
+      <button id="add-btn">Добавить</button>
+    </section>
+
+    <section class="task-list">
+      <h2>Список задач</h2>
+      <div class="filters">
+        <select id="filter">
+          <option value="all">Все категории</option>
+          <option value="Работа">Работа</option>
+          <option value="Учёба">Учёба</option>
+          <option value="Дом">Дом</option>
+          <option value="Разное">Разное</option>
+        </select>
+        <select id="sort">
+          <option value="time">Сортировать по времени</option>
+          <option value="priority">Сортировать по приоритету</option>
+        </select>
+      </div>
+      <div id="tasks"></div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
